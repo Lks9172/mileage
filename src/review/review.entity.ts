@@ -4,8 +4,8 @@ import { PointLog } from '../point_log/point_log.entity';
 import {
   BaseEntity,
   Column,
-  CreateDateColumn,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   OneToMany,
@@ -16,12 +16,14 @@ import { User } from '../user/user.entity';
 
 @Entity()
 export class Review extends BaseEntity {
+  @Index()
   @PrimaryColumn('uuid', {name: 'id'})
   id!: string;
 
   @Column({name:'content', type:'longtext', nullable: true})
   content!: string;
 
+  @Index()
   @ManyToOne(() => User, (user) => user.review, {
     nullable: false,
     onDelete: 'CASCADE',
@@ -29,6 +31,7 @@ export class Review extends BaseEntity {
   @JoinColumn({ name: 'user_id' })
   user!: User;
 
+  @Index()
   @ManyToOne(() => Place, (place) => place.review, {
     nullable: false,
     onDelete: 'CASCADE',

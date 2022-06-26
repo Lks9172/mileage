@@ -1,8 +1,8 @@
 import {
   BaseEntity,
   Column,
-  CreateDateColumn,
   Entity,
+  Index,
   OneToMany,
   PrimaryColumn,
 } from 'typeorm';
@@ -11,6 +11,7 @@ import { PointLog } from '../point_log/point_log.entity';
 
 @Entity()
 export class User extends BaseEntity {
+  @Index()
   @PrimaryColumn('uuid', {name: 'user_id'})
   id!: string;
 

@@ -3,6 +3,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   OneToMany,
@@ -13,6 +14,7 @@ import { Review } from '../review/review.entity';
 
 @Entity()
 export class Photo extends BaseEntity {
+  @Index()
   @PrimaryColumn('uuid', {name: 'id'})
   id!: string;
 

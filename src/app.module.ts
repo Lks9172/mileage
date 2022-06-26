@@ -7,6 +7,8 @@ import { PhotoModule } from './photo/photo.module';
 import { PlaceModule } from './place/place.module';
 import { PointLogModule } from './point_log/point-log.module';
 import { PointModule } from './point/point.module';
+import { EventsController } from './events/events.controller';
+import { EventsModule } from './events/events.module';
 
 @Module({
   imports: [
@@ -17,8 +19,9 @@ import { PointModule } from './point/point.module';
     PlaceModule,
     PointLogModule,
     PointModule,
+    EventsModule,
   ],
-  controllers: [],
+  controllers: [EventsController],
   providers: [],
 })
 export class AppModule {}

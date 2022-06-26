@@ -22,6 +22,13 @@ export class PointLog extends BaseEntity {
   @Column({ name: 'value', type:'int', nullable: false })
   value!: number;
 
+  @CreateDateColumn({
+    type: 'timestamp',
+    name: 'created_at',
+    nullable: false,
+  })
+  createdAt!: Date;
+
   @ManyToOne(() => Review, (review) => review.pointLog, {
     nullable: false,
     onDelete: 'CASCADE',
