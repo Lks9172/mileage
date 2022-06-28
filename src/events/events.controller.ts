@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { CreateEventsDto } from './dto/create-events.dto';
+import { resBody } from './dto/types';
 import { EventsService } from './events.service';
 
 @Controller('events')
@@ -10,11 +10,13 @@ export class EventsController {
     @Post('/')
     async completeOrder(
       @Body() createEventsDto: CreateEventsDto,
-    ): Promise<CreateEventsDto> {
-      const result = {
+    ): Promise<resBody> {
+      const data = await this.eventsService.takeEvent(createEventsDto);
+
+      const res = {
         success: true,
-      };
-      await this.eventsService.takeEvent(createEventsDto.action);
-      return createEventsDto;
+        data
+      }
+      return res;
     }
 }

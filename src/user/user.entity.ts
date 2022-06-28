@@ -18,7 +18,7 @@ export class User extends BaseEntity {
   @Column({ name: 'mileage', nullable: false, default: 0})
   mileage!: number;
 
-  @OneToMany(() => Review, (review) => review.user)
+  @OneToMany((type) => Review, (review) => review.user)
   review!: Review[];
 
   @OneToMany(() => PointLog, (pointLog) => pointLog.user)

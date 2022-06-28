@@ -8,10 +8,16 @@ import { PlaceModule } from './place/place.module';
 import { PointLogModule } from './point_log/point-log.module';
 import { PointModule } from './point/point.module';
 import { EventsModule } from './events/events.module';
+import { UserRepository } from 'src/user/user.repository';
+import { ReviewRepository } from './review/review.repository';
+import { PlaceRepository } from './place/place.repository';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(typeORMConfig),
+    TypeOrmModule.forFeature([UserRepository]),
+    TypeOrmModule.forFeature([ReviewRepository]),
+    TypeOrmModule.forFeature([PlaceRepository]),
     UserModule,
     ReviewModule,
     PhotoModule,

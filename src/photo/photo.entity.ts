@@ -22,7 +22,7 @@ export class Photo extends BaseEntity {
   path!: string;
 
   @ManyToOne(() => Review, (review) => review.photo, {
-    nullable: false,
+    nullable: true,
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'review_id' })

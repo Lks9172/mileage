@@ -17,8 +17,8 @@ import { User } from '../user/user.entity';
 @Entity()
 export class Review extends BaseEntity {
   @Index()
-  @PrimaryColumn('uuid', {name: 'id'})
-  id!: string;
+  @PrimaryColumn('uuid', {name: 'review_id'})
+  reviewId!: string;
 
   @Column({name:'content', type:'longtext', nullable: true})
   content!: string;
