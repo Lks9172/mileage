@@ -1,18 +1,20 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { CreateEventsDto } from './dto/create-events.dto';
+import { EventsService } from './events.service';
 
 @Controller('events')
 export class EventsController {
+    constructor(private eventsService: EventsService) {}
+
     @Post('/')
     async completeOrder(
       @Body() createEventsDto: CreateEventsDto,
-    ): Promise<any> {
+    ): Promise<CreateEventsDto> {
       const result = {
         success: true,
       };
-  
-      console.log(`${createEventsDto} : 주문의 배송이 완료되었습니다.`);
-  
-      return result;
+      await this.eventsService.takeEvent(createEventsDto.action);
+      return createEventsDto;
     }
 }

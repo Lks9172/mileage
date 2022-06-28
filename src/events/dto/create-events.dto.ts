@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsUUID } from 'class-validator';
+import { IsArray, IsNotEmpty, IsUUID } from 'class-validator';
 import { ActionType } from '../../point_log/point_log.enum'
 
 export class CreateEventsDto {
@@ -16,6 +16,7 @@ export class CreateEventsDto {
   content: string;
 
   @IsNotEmpty()
+  @IsArray()
   attachedPhotoIds: string[];
 
   @IsNotEmpty()
